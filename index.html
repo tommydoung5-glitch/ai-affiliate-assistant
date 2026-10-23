@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#12343b">
+<title>AI Affiliate Assistant – ผู้ช่วยสร้างคอนเทนต์ขายของ Shopee และ Facebook</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Prompt:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="logo"><b>🛍️</b> AI Affiliate Assistant</div>
+    <h1>ผู้ช่วยสร้างคอนเทนต์ขายของ</h1>
+    <p>สำหรับสาย Affiliate บน Shopee และ Facebook กรอกข้อมูลสินค้าครั้งเดียว แล้วเลือกสิ่งที่อยากได้</p>
+  </header>
+  <div id="banner" class="banner" role="status" hidden></div>
+  <div id="gate" class="card gate" hidden>
+    <label for="code">รหัสเข้าใช้งาน</label>
+    <input id="code" type="password" placeholder="กรอกรหัสที่เจ้าของเว็บให้ไว้" autocomplete="off">
+    <div class="err" id="gateerr" role="alert"></div>
+    <button type="button" class="gbtn" id="gatebtn">ยืนยันรหัส</button>
+  </div>
+
+  <section class="card" aria-label="ข้อมูลสินค้า">
+    <div class="field">
+      <label for="name">ชื่อสินค้า</label>
+      <input id="name" type="text" placeholder="เช่น เครื่องดูดฝุ่นไร้สาย" autocomplete="off">
+    </div>
+    <div class="field">
+      <label for="price">ราคา <span class="hint">(บาท)</span></label>
+      <input id="price" type="text" inputmode="numeric" placeholder="เช่น 1290" autocomplete="off">
+    </div>
+    <div class="field">
+      <label for="feat">จุดเด่นสินค้า <span class="hint">(ขึ้นบรรทัดใหม่ต่อ 1 ข้อ)</span></label>
+      <textarea id="feat" placeholder="แรงดูดสูง&#10;น้ำหนักเบา&#10;ใช้งานได้นาน 40 นาที"></textarea>
+    </div>
+    <div class="field">
+      <label id="plabel">ขายบนแพลตฟอร์มไหน</label>
+      <div class="seg" role="radiogroup" aria-labelledby="plabel">
+        <button type="button" class="chip on" role="radio" aria-checked="true" data-p="shopee">🧡 Shopee</button>
+        <button type="button" class="chip" role="radio" aria-checked="false" data-p="facebook">💙 Facebook</button>
+      </div>
+    </div>
+    <div class="err" id="err" role="alert"></div>
+
+    <div class="actions">
+      <button class="act all" data-k="all"><span class="ic">✨</span><span><b>สร้างทั้งหมดในครั้งเดียว</b><small>ได้ครบทุกอย่างในหน้าเดียว</small></span></button>
+      <button class="act" data-k="pain"><span class="ic">🔍</span><span><b>วิเคราะห์ปัญหาที่ลูกค้าพบ</b><small>รู้ว่าลูกค้าลังเลเรื่องอะไร และตอบอย่างไร</small></span></button>
+      <button class="act" data-k="script"><span class="ic">🎙️</span><span><b>สร้างบทพูดขายสินค้า 10 วินาที</b><small>เปิดคลิป โชว์จุดเด่น ปิดการขาย</small></span></button>
+      <button class="act" data-k="head"><span class="ic">🎬</span><span><b>สร้างพาดหัวคลิป</b><small>6 พาดหัวให้เลือกใช้</small></span></button>
+      <button class="act" data-k="fb"><span class="ic">📘</span><span><b>สร้างแคปชั่น Facebook</b><small>พร้อมโพสต์ ได้ 2 แบบ</small></span></button>
+      <button class="act" data-k="tag"><span class="ic">#️⃣</span><span><b>สร้าง Hashtag</b><small>15 แฮชแท็กตามแพลตฟอร์ม</small></span></button>
+      <button class="act" data-k="vid"><span class="ic">🤖</span><span><b>สร้าง Prompt วิดีโอ AI 3 ฉาก</b><small>นำไปวางในเครื่องมือสร้างวิดีโอ AI</small></span></button>
+    </div>
+    <div class="note">ข้อความเขียนโดย AI จริง กดปุ่มเดิมซ้ำเพื่อให้ AI เขียนแบบใหม่</div>
+    <button class="clear" id="clear" type="button">ล้างข้อมูลทั้งหมด</button>
+  </section>
+
+  <section id="result" hidden aria-live="polite">
+    <div class="rhead"><h2 id="rtitle"></h2><button class="copyall" id="copyall" type="button">คัดลอกทั้งหมด</button></div>
+    <div id="list"></div>
+  </section>
+</div>
+<div id="toast" role="status"></div>
+<script src="script.js"></script>
+</body>
+</html>

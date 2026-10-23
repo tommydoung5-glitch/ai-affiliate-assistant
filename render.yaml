@@ -1,0 +1,27 @@
+# Render Blueprint: Render อ่านไฟล์นี้เพื่อสร้างเว็บเซอร์วิสให้อัตโนมัติ
+# หมายเหตุ: ห้ามใส่ API Key ลงในไฟล์นี้ ค่า sync: false แปลว่า Render จะให้กรอกค่าในหน้าเว็บ Render เอง
+services:
+  - type: web
+    name: ai-affiliate-assistant
+    runtime: node
+    plan: free          # เปลี่ยนเป็น starter ได้ถ้าไม่อยากให้เว็บหลับเมื่อไม่มีคนใช้
+    region: singapore   # ใกล้ประเทศไทยที่สุด
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /api/health
+    autoDeploy: true
+    envVars:
+      - key: NODE_VERSION
+        value: "20"
+      - key: ANTHROPIC_API_KEY
+        sync: false
+      - key: ACCESS_CODE
+        sync: false
+      - key: ANTHROPIC_MODEL
+        value: claude-sonnet-5-5
+      - key: TRUST_PROXY
+        value: "1"
+      - key: RATE_LIMIT_PER_MIN
+        value: "20"
+      - key: GLOBAL_RATE_LIMIT_PER_MIN
+        value: "120"
